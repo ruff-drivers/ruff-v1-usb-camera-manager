@@ -1,7 +1,7 @@
 'use strict';
 
 var kernelModule = require('kernel-module');
-var usbDevice = require('device-manager');
+var usbDevice = require('usb-manager');
 var fs = require('fs');
 var Dir = require('_file').Dir;
 

@@ -24,6 +24,9 @@
   "ruff": {
     "devDependencies": {
       "t": "^0.1.6"
+    },
+    "dependencies": {
+      "usb-manaer": "^0.1.0"
     }
   }
 }
