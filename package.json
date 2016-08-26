@@ -1,0 +1,29 @@
+{
+  "name": "ruff-v1-usb-camera-manager",
+  "version": "0.1.0",
+  "description": "Manage USB cameras.",
+  "author": "Nanchao Inc.",
+  "license": "MIT",
+  "keywords": [
+    "ruff",
+    "USB camera",
+    "UVC"
+  ],
+  "main": "src/index.js",
+  "engines": {
+    "ruff": ">=1.4.0 <1.5.0"
+  },
+  "boards": {
+    "ruff-mbd-v1": "*"
+  },
+  "devDependencies": {
+    "eslint": "^2.11.1",
+    "ruff-standard": "^0.1.4",
+    "rvm": "^0.3.2"
+  },
+  "ruff": {
+    "devDependencies": {
+      "t": "^0.1.6"
+    }
+  }
+}
