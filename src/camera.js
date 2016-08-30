@@ -53,7 +53,6 @@ function grabPicture(device, resolution, callback) {
 
 function Camera(option) {
     this._device = option && option.path || '/dev/video0';
-    this._isClosed = false;
     this._fifoFd = -1;
     this._captureQueue = new async.Queue(this._captureHandler);
     this._grabFinish = false;
@@ -187,9 +186,6 @@ Camera.prototype._captureHandler = function (option, picture, callback) {
 };
 
 Camera.prototype.capture = function () {
-    if (this._isClosed) {
-        throw new Error('Camera is closed, this method cannot be invoked');
-    }
     var option;
     var callback;
     if (arguments.length >= 2) {
@@ -208,10 +204,6 @@ Camera.prototype.capture = function () {
     var picture = new Picture();
     this._captureQueue.push(this, [option, picture], callback);
     return picture;
-};
-
-Camera.prototype.close = function () {
-    this._isClosed = true;
 };
 
 module.exports = Camera;
