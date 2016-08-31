@@ -84,7 +84,6 @@ Camera.prototype._checkDevice = function (callback) {
             checkFinish(new Error('Cannot find USB camera'));
             return;
         }
-        console.log('[camera] check device', that._checkDeviceTimes);
         that._checkDeviceTimes++;
         try {
             fs.statSync(that._device);
