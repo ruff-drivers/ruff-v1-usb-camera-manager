@@ -4,13 +4,20 @@ This package manager all of the cameras with USB interfae that is compatible wit
 
 This package has two parts: one is the camera manager and the other is the driver of camera.
 
-The camera manager supplies the `mount` or `unomut` events when camera is pluged into or unpluged from the system.
+The camera manager supplies the `mount` or `unomut` events when camera is plugged into or unplugged from the system.
 
 The driver of camera supplies some specific functions.
 
 ## Supported Engines
 
 * Ruff: >=1.4.0 <1.5.0
+
+## Installing
+
+Execute following command to install.
+```shell
+rap install ruff-v1-usb-camera-manager
+```
 
 ## Usage
 
@@ -66,7 +73,7 @@ It is invoked by usb to uninstall the UVC driver used by camera driver.
 
 This method is defined by the framework of usb device manager (ruff-v1-usb-manager).
 
-It is invoked by usb when one usb device is pluged into the system.
+It is invoked by usb when one usb device is plugged into the system.
 
 If the `devPath` does not belong to usb cameras, this method returns `null`, otherwise returns the instance of camera.
 
@@ -76,11 +83,11 @@ If the `devPath` does not belong to usb cameras, this method returns `null`, oth
 
 #### `mount`
 
-The `mount` event informs that one usb camera is pluged into the system.
+The `mount` event informs that one usb camera is plugged into the system.
 
 #### `unmount`
 
-The `unmount` event informs that one usb camera is pluged from the system.
+The `unmount` event informs that one usb camera is plugged from the system.
 
 ## Camera API References
 
