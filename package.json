@@ -1,6 +1,6 @@
 {
   "name": "ruff-v1-usb-camera-manager",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Manage USB cameras.",
   "author": "Nanchao Inc.",
   "license": "MIT",
@@ -11,7 +11,7 @@
   ],
   "main": "src/index.js",
   "engines": {
-    "ruff": ">=1.4.0 <1.5.0"
+    "ruff": ">=1.5.0 <1.6.0"
   },
   "boards": {
     "ruff-mbd-v1": "^4.1.0"

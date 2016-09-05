@@ -6,6 +6,7 @@ var EventEmitter = require('events');
 var Poll = require('poll');
 var fs = require('fs');
 var async = require('ruff-async');
+var spawn = require('child_process').spawn;
 
 var MODE_666 = parseInt('666', 8);
 var FIFO_NAME = 'pic.fifo';
@@ -16,7 +17,10 @@ var CHECK_DEVICE_TIMES = 100;
 var CHUNK_SIZE = 4096;
 
 function mkfifo(name, callback) {
-    uv.spawn('/usr/bin/mkfifo', [name], '/tmp/', -1, -1, -1, function (code) {
+    var mkfifo = spawn('/usr/bin/mkfifo', [name], {
+        cwd: '/tmp/'
+    });
+    mkfifo.on('exit', function (code) {
         if (code === 0) {
             callback && callback();
             return;
@@ -26,7 +30,10 @@ function mkfifo(name, callback) {
 }
 
 function rmfifo(name, callback) {
-    uv.spawn('/bin/rm', ['-f', name], '/tmp/', -1, -1, -1, function (code) {
+    var rm = spawn('/bin/rm', ['-f', name], {
+        cwd: '/tmp/'
+    });
+    rm.on('exit', function (code) {
         if (code === 0) {
             callback && callback();
             return;
@@ -42,7 +49,11 @@ function grabPicture(device, resolution, callback) {
     args.push('-d', device);
     args.push('-r', resolution);
     args.push('--save', FIFO_NAME);
-    uv.spawn('/usr/bin/fswebcam', args, '/tmp/', -1, -1, -1, function (code) {
+
+    var fswebcam = spawn('/usr/bin/fswebcam', args, {
+        cwd: '/tmp/'
+    });
+    fswebcam.on('exit', function (code) {
         if (code === 0) {
             callback && callback();
             return;

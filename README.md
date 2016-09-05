@@ -10,7 +10,7 @@ The driver of camera supplies some specific functions.
 
 ## Supported Engines
 
-* Ruff: >=1.4.0 <1.5.0
+* Ruff: >=1.5.0 <1.6.0
 
 ## Installing
 
