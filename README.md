@@ -23,6 +23,10 @@ rap install ruff-v1-usb-camera-manager
 
 Here is the basic usage of this driver.
 
+### Example 1
+
+Specify the resolution when invoke the method of camera.
+
 ```js
 var CameraManager = require('ruff-v1-usb-camera-manager');
 var cameraManager = new CameraManager();
@@ -49,6 +53,40 @@ cameraManager.on('unmount', function (camera) {
 });
 ```
 
+### Example 2
+
+Specify the resolution when instance the camera manager.
+
+```js
+var CameraManager = require('ruff-v1-usb-camera-manager');
+var options = {
+    resolution: {
+        width: 800,
+        height: 600
+    }
+}
+var cameraManager = new CameraManager(options);
+
+$('#usb').install(cameraManager);
+cameraManager.on('mount', function (camera) {
+    // camera is mounted
+    var picture = camera.capture();
+
+    picture.on('data', function (data) {
+        // ...
+    });
+
+    picture.on('end', function () {
+        // ...
+    });
+});
+
+cameraManager.on('unmount', function (camera) {
+    // camera is unmounted
+});
+```
+
+
 ## Manager API References
 
 ### Methods
@@ -69,7 +107,7 @@ It is invoked by usb to uninstall the UVC driver used by camera driver.
 
 - **callback:** No argument other than a possible error is given to the completion callback. It is optional.
 
-#### `createDevice(devPath)`
+#### `createDevice(devPath, options)`
 
 This method is defined by the framework of usb device manager (ruff-v1-usb-manager).
 
@@ -78,6 +116,9 @@ It is invoked by usb when one usb device is plugged into the system.
 If the `devPath` does not belong to usb cameras, this method returns `null`, otherwise returns the instance of camera.
 
 - **devPath:** The mounted path of usb device in the system.
+
+- **options:** This is the optional arguments used to construct the instance of camera.
+You can add a `resolution` propertity, which is an object with `width` and `height` properties, into the `options` to specify the resolution of the camera.
 
 ### Events
 
