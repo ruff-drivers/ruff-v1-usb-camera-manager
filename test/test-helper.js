@@ -26,7 +26,8 @@ describe('Test for `getAvailableCamera` method', function () {
 
     after(function (done) {
         var rm = spawn('rm', ['-rf', dirs1[0], dirs2[0]], {
-            cwd: __dirname
+            cwd: __dirname,
+            env: []
         });
         rm.on('exit', function (code) {
             if (code) {
