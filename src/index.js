@@ -25,12 +25,16 @@ var prototype = {
             callback && callback(error);
         }
     },
-    createDevice: function (devPath) {
+    createDevice: function (devPath, options) {
         var devInfo = getAvailableCamera(devPath);
         if (devInfo) {
-            return new Camera({
+            var cameraOptions = {
                 path: DEV_PATH + devInfo
-            });
+            };
+            if (options && options.resolution) {
+                cameraOptions.resolution = options.resolution;
+            }
+            return new Camera(cameraOptions);
         }
 
         return null;

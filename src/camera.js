@@ -64,6 +64,10 @@ function grabPicture(device, resolution, callback) {
 
 function Camera(option) {
     this._device = option && option.path || '/dev/video0';
+    this._resolution = option && option.resolution || {
+        width: 320,
+        height: 240
+    };
     this._fifoFd = -1;
     this._captureQueue = new async.Queue(this._captureHandler);
     this._grabFinish = false;
@@ -140,8 +144,8 @@ Camera.prototype._grabInit = function (callback) {
 };
 
 Camera.prototype._grab = function (option, picture, callback) {
-    var width = option && option.width || 320;
-    var height = option && option.height || 240;
+    var width = option.width;
+    var height = option.height;
     var resolution = width + 'x' + height;
     var that = this;
     var buffer = new Buffer(CHUNK_SIZE);
@@ -196,7 +200,7 @@ Camera.prototype._captureHandler = function (option, picture, callback) {
 };
 
 Camera.prototype.capture = function () {
-    var option;
+    var option = this._resolution;
     var callback;
     if (arguments.length >= 2) {
         option = arguments[0];
