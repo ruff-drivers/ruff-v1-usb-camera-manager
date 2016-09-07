@@ -93,7 +93,7 @@ cameraManager.on('unmount', function (camera) {
 
 #### `attach([callback])`
 
-This method is defined by the framework of usb device manager (ruff-v1-usb-manager).
+This method is defined by the framework of usb device manager.
 
 It is invoked by usb to install the UVC driver used by camera driver.
 
@@ -101,7 +101,7 @@ It is invoked by usb to install the UVC driver used by camera driver.
 
 #### `detach([callback])`
 
-This method is defined by the framework of usb device manager (ruff-v1-usb-manager).
+This method is defined by the framework of usb device manager.
 
 It is invoked by usb to uninstall the UVC driver used by camera driver.
 
@@ -109,7 +109,7 @@ It is invoked by usb to uninstall the UVC driver used by camera driver.
 
 #### `createDevice(devPath, options)`
 
-This method is defined by the framework of usb device manager (ruff-v1-usb-manager).
+This method is defined by the framework of usb device manager.
 
 It is invoked by usb when one usb device is plugged into the system.
 
