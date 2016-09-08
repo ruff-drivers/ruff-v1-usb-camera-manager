@@ -91,6 +91,21 @@ cameraManager.on('unmount', function (camera) {
 
 ### Methods
 
+### `CameraManager(options)`
+
+Exported by this module, it is the constructor method.
+
+- **options:** It is arguments passed to instance one object of `Camera`, you can set the `resolution` property, for example:
+
+```js
+{
+    resolution: {
+        width: 800,
+        height: 600
+    }
+}
+```
+
 #### `attach([callback])`
 
 This method is defined by the framework of usb device manager.
