@@ -1,6 +1,6 @@
 # USB Camera Manager for Ruff
 
-This package manager all of the cameras with USB interfae that is compatible with the protocol of UVC(USB Video Class).
+This package manages all of the cameras with USB interfae that is compatible with the protocol of UVC(USB Video Class).
 
 This package has two parts: one is the camera manager and the other is the driver of camera.
 
@@ -33,19 +33,35 @@ var cameraManager = new CameraManager();
 $('#usb').install(cameraManager);
 cameraManager.on('mount', function (camera) {
     // camera is mounted
-    var resolution = {
+    var picture1 = camera.capture({
         width: 800,
         height: 600
-    };
-    var picture = camera.capture(resolution);
+    });
 
-    picture.on('data', function (data) {
+    picture1.on('data', function (data) {
+        // JPEG format data
         // ...
     });
 
-    picture.on('end', function () {
+    picture1.on('end', function () {
         // ...
     });
+
+    var picture2 = camera.capture({
+        width: 320,
+        height: 240
+    });
+
+    picture2.on('data', function (data) {
+        // JPEG format data
+        // ...
+    });
+
+    picture2.on('end', function () {
+        // ...
+    });
+
+
 });
 
 cameraManager.on('unmount', function (camera) {
@@ -73,6 +89,7 @@ cameraManager.on('mount', function (camera) {
     var picture = camera.capture();
 
     picture.on('data', function (data) {
+        // JPEG format data
         // ...
     });
 
@@ -105,35 +122,6 @@ Exported by this module, it is the constructor method.
     }
 }
 ```
-
-#### `attach([callback])`
-
-This method is defined by the framework of usb device manager.
-
-It is invoked by usb to install the UVC driver used by camera driver.
-
-- **callback:** No argument other than a possible error is given to the completion callback. It is optional.
-
-#### `detach([callback])`
-
-This method is defined by the framework of usb device manager.
-
-It is invoked by usb to uninstall the UVC driver used by camera driver.
-
-- **callback:** No argument other than a possible error is given to the completion callback. It is optional.
-
-#### `createDevice(devPath, options)`
-
-This method is defined by the framework of usb device manager.
-
-It is invoked by usb when one usb device is plugged into the system.
-
-If the `devPath` does not belong to usb cameras, this method returns `null`, otherwise returns the instance of camera.
-
-- **devPath:** The mounted path of usb device in the system.
-
-- **options:** This is the optional arguments used to construct the instance of camera.
-You can add a `resolution` propertity, which is an object with `width` and `height` properties, into the `options` to specify the resolution of the camera.
 
 ### Events
 
