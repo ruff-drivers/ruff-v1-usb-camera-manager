@@ -14,16 +14,16 @@
     "ruff": ">=1.5.0 <1.6.0"
   },
   "scripts": {
-      "lint": "eslint *.js",
-      "pretest": "npm run lint",
-      "test": "ruff ./test/test-helper.js"
+    "lint": "eslint *.js",
+    "pretest": "npm run lint",
+    "test": "ruff ./test/test-helper.js"
   },
   "boards": {
     "ruff-mbd-v1": "^4.1.0"
   },
   "devDependencies": {
-    "eslint": "^2.11.1",
-    "ruff-standard": "^0.1.4",
+    "eslint": "^3.5.0",
+    "ruff-standard": "^0.2.0",
     "rvm": "^0.3.2"
   },
   "ruff": {
