@@ -13,7 +13,7 @@ var Camera = require('./camera');
 var DEV_PATH = '/dev/';
 var UVC_DRIVER_NAME = 'uvcvideo';
 
-var prototype = {
+module.exports = usbDevice({
     attach: function (callback) {
         try {
             kernelModule.install(UVC_DRIVER_NAME);
@@ -44,6 +44,4 @@ var prototype = {
 
         return null;
     }
-};
-
-module.exports = usbDevice(prototype);
+});
