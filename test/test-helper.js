@@ -18,12 +18,13 @@ describe('Test for `getAvailableCamera` method', function () {
 
     before(function () {
         var dir1 = '';
-        for (var i = 0; i < dirs1.length; i++) {
+        var i;
+        for (i = 0; i < dirs1.length; i++) {
             dir1 = path.join(dir1, dirs1[i]);
             fs.mkdirSync(path.join(__dirname, dir1));
         }
         var dir2 = '';
-        for (var i = 0; i < dirs2.length; i++) {
+        for (i = 0; i < dirs2.length; i++) {
             dir2 = path.join(dir2, dirs2[i]);
             fs.mkdirSync(path.join(__dirname, dir2));
         }
