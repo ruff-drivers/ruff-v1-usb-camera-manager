@@ -14,15 +14,19 @@ function getAvailableCamera(devPath) {
     var checkedPath = path.join(devPath, 'video4linux');
     try {
         fs.statSync(checkedPath);
-        var items = fs.readdirSync(checkedPath);
-        for (var i = 0; i < items.length; i++) {
-            if (cameraNameRegExp.exec(items[i]) !== null) {
-                return items[i];
-            }
-        }
     } catch (error) {
         return null;
     }
+
+    var items = fs.readdirSync(checkedPath);
+
+    for (var i = 0; i < items.length; i++) {
+        if (cameraNameRegExp.test(items[i])) {
+            return items[i];
+        }
+    }
+
+    return null;
 }
 
 exports.getAvailableCamera = getAvailableCamera;
